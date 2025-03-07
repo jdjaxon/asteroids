@@ -3,10 +3,18 @@
 
 import pygame
 
+import constants as ct
+
 
 def main():
-    """Entrypoint"""
-    print("Starting Asteroids!")
+    """Runs main game loop"""
+    screen = pygame.display.set_mode((ct.SCREEN_WIDTH, ct.SCREEN_HEIGHT))
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+        screen.fill((0,0,0))
+        pygame.display.flip()
 
 
 if __name__ == "__main__":
