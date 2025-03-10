@@ -6,6 +6,7 @@ from circleshape import CircleShape
 from constants import (
     PLAYER_RADIUS,
     PLAYER_TURN_SPEED,
+    PLAYER_SPEED,
 )
 
 
@@ -40,11 +41,27 @@ class Player(CircleShape):
         self.rotation += PLAYER_TURN_SPEED * dt
 
 
+    # pylint: disable=no-member
+    # pylint is unable to detect some of pygame's constants.
+    # It may be because they are set dynamically.
     def update(self, dt):
+        """Update the player's position and rotation."""
         keys = pygame.key.get_pressed()
-
+        # Rotate left
         if keys[pygame.K_a]:
-            self.rotate(dt * -1)
-
+            self.rotate(-dt)
+        # Rotate right
         if keys[pygame.K_d]:
             self.rotate(dt)
+        # Move forward
+        if keys[pygame.K_w]:
+            self.move(dt)
+        # Move backward
+        if keys[pygame.K_s]:
+            self.move(-dt)
+
+
+    def move(self, dt):
+        """Move the player forward and backward."""
+        forward = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += forward * PLAYER_SPEED * dt
