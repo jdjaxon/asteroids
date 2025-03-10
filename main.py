@@ -1,6 +1,7 @@
 """Asteroids clone using pygame."""
 
 
+import sys
 import pygame
 
 from asteroid import Asteroid
@@ -38,8 +39,15 @@ def main():
 
         screen.fill("black")
         updatable.update(dt)
+
+        for obj in asteroids:
+            if obj.detect_collision(player):
+                print("Game over!")
+                sys.exit(0)
+
         for item in drawable:
             item.draw(screen)
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
