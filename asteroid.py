@@ -13,7 +13,7 @@ class Asteroid(CircleShape):
 
     def draw(self, screen):
         """Draw object to screen."""
-        pygame.draw.circle(screen, "white", self.position, 2)
+        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
 
 
     def update(self, dt):
