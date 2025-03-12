@@ -16,9 +16,11 @@ class CircleShape(pygame.sprite.Sprite):
         self.velocity = pygame.Vector2(0, 0)
         self.radius = radius
 
+
     def draw(self, screen):
         """Draw the Sprite to the screen. Will be overridden by sub-classes"""
         pass
+
 
     def update(self, dt):
         """Update the Sprite. Will be overridden by sub-classes"""
