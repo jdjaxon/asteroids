@@ -51,6 +51,7 @@ def main():
             item.draw(screen)
 
         pygame.display.flip()
+        # Setting frame rate to 60 FPS
         dt = clock.tick(60) / 1000
 
 
